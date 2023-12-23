@@ -2,9 +2,9 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
-import 'package:shnam/login/loginScreen.dart';
+import 'package:shnam/screen/loginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:shnam/view/appMain.dart';
+import 'package:shnam/screen/appMain.dart';
 import 'dart:async';
 
 void main() async {
@@ -15,7 +15,6 @@ void main() async {
   runApp(MyFirstApp());
 }
 
-// ignore: use_key_in_widget_constructors
 class MyFirstApp extends StatefulWidget {
   @override
   MyFirstAppState createState() => MyFirstAppState();
@@ -23,6 +22,7 @@ class MyFirstApp extends StatefulWidget {
 
 class MyFirstAppState extends State<MyFirstApp> {
 
+  // Shared Preferences 자동 로그인 토큰 확인
   Future<String> _loadUserInfo() async{
     SharedPreferences prefs = await SharedPreferences.getInstance();
     return prefs.getString('email') ?? '';
@@ -47,17 +47,17 @@ class MyFirstAppState extends State<MyFirstApp> {
             // Firebase에 등록된 이메일과 비교했을 때
             if(snapshot.data!.isEmpty && snapshot.data != userEmail) {
               // 일치하면 로그인 화면으로 반환
-              return loginScreen();
+              return LoginScreen();
             }
             else if(snapshot.data!.isNotEmpty && snapshot.data == userEmail){
               // 일치하면 앱 메인 화면 반환
               return AppMain();
             }
             else {
-              return loginScreen();
+              return LoginScreen();
             }
           } else {
-            return loginScreen();
+            return LoginScreen();
           }
         }
       )

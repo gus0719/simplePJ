@@ -12,19 +12,19 @@ onBackPressed(BuildContext context) async {
         style: TextStyle(color: Colors.black),
       ),
       content: const Text('앱을 종료하시겠습니까?'),
-      actions: <Widget>[
+      actions: [
         TextButton(
           onPressed: () {
             SystemNavigator.pop();
           },
-          child: const Text('네'),
+          child: const Text('네', style: TextStyle(color: Colors.black),),
         ),
         TextButton(
           onPressed: () {
             Navigator.pop(context);
           },
-          child: const Text('아니오'),
-        )
+          child: const Text('아니오', style: TextStyle(color: Colors.grey),),
+        )   
       ],
     )
   );
