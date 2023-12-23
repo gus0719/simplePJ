@@ -15,7 +15,12 @@ class HomeState extends State<Home> {
             delegate: SliverChildListDelegate(
               addAutomaticKeepAlives: true,
               [
-                for(int i = 0; i < 100; i++) IconButton(onPressed: () => print('d'), icon: Icon(Icons.border_all)) // 위젯 배치 테스트용
+                for(int i = 1; i <= 100; i++) Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text("$i Line"), Divider()
+                  ],
+                )
               ] 
             )
           )
